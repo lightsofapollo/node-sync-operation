@@ -1,3 +1,62 @@
 # Do horrible blocking operations with ease!
 
 ( please read this as don't do this unless you really know why )
+
+### Example:
+
+``` js
+
+/* index.js */
+
+var sync = require('sync-operation');
+
+var result = sync.run(__dirname + '/read.js', { file: __dirname + '/foo.txt' });
+// => { err: null, content: 'whatever was in foo.txt' }
+
+```
+
+``` js
+
+/* read.js */
+
+var fs = require('fs');
+var operation = require('sync-operation').operation(process.argv);
+
+fs.readFile(options.file, 'utf8', function(err, content) {
+  operation.end({
+    err: err,
+    content: content
+  });
+});
+
+```
+
+### Why would you... do this ?
+
+  - To experiment with blocking api's for integration testing ( think selenimum )
+  - mimic sync xhr
+  - break your computer
+
+## License
+
+The MIT License (MIT)
+
+Copyright (c) 2013 Sahaja James Lal
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
