@@ -26,7 +26,8 @@ function run(file, options) {
       file, /* executable */
       blockerPath, /* where executable will write to */
       (new Buffer(JSON.stringify(options)).toString('base64')) /* options */
-    ]
+    ],
+    { stdio: ['pipe', process.stdout, process.stderr] }
   );
 
   // handles content written to file
