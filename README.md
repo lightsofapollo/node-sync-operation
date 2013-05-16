@@ -1,6 +1,6 @@
 # Do horrible blocking operations with ease!
 
-( please read this as don't do this unless you really know why )
+( please read this and please don't do this in normal situations  )
 
 ### Example:
 
