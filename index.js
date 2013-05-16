@@ -63,6 +63,7 @@ function run(file, options) {
 function operation(argv) {
   // path to write to
   var blockerPath = argv[1];
+  console.log(argv, '<<< ARGVS');
 
   var options;
   // possible options
