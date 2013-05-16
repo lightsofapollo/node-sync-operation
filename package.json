@@ -1,0 +1,24 @@
+{
+  "name": "sync-operation",
+  "version": "0.0.1",
+  "main": "index.js",
+  "description": "Do horrible blocking syncrhonous operations with ease",
+  "author": "James Lal",
+
+  "dependencies" : {
+    "json-wire-protocol": "~0.0.1"
+  },
+
+  "scripts": {
+    "test": "make test"
+  },
+
+  "devDependencies": {
+    "mocha": "~1.7"
+  },
+
+  "license": "MIT",
+  "engine": {
+    "node": ">=0.4"
+  }
+}

@@ -11,14 +11,13 @@ var fs = require('fs');
  */
 function run(file, options) {
   var time = Date.now();
-  var rand = Math.ceil(Math.random());
+  var rand = Math.ceil(Math.random() * 1000);
 
   // create a file to read
   var blockerPath = __dirname + '/.thread-blocker-' + time + '-' + rand;
 
   // create file
   fs.writeFileSync(blockerPath, '', 'utf8');
-  console.log(blockerPath, '<<<<!');
 
   // spawn the process
   var operationProcess = spawn(
@@ -50,7 +49,7 @@ function run(file, options) {
   operationProcess.kill();
 
   // cleanup blocker tmp file.
-  //fs.unlinkSync(blockerPath);
+  fs.unlinkSync(blockerPath);
 
   return response;
 }
@@ -62,14 +61,13 @@ function run(file, options) {
  */
 function operation(argv) {
   // path to write to
-  var blockerPath = argv[1];
-  console.log(argv, '<<< ARGVS');
+  var blockerPath = argv[2];
 
   var options;
   // possible options
-  if (argv[2]) {
+  if (argv[3]) {
     try {
-      options = JSON.parse(new Buffer(argv[2], 'base64').toString());
+      options = JSON.parse(new Buffer(argv[3], 'base64').toString());
     } catch(e) {
       fs.writeFileSync(blockerPath, wire.stringify({
         error: 'invalid options (json parse error)'
