@@ -6,7 +6,7 @@
   "author": "James Lal",
 
   "dependencies" : {
-    "json-wire-protocol": "~0.0.1"
+    "json-wire-protocol": "~0.1"
   },
 
   "scripts": {
