@@ -33,7 +33,7 @@ fs.readFile(options.file, 'utf8', function(err, content) {
 
 ### Why would you... do this ?
 
-  - To experiment with blocking api's for integration testing ( think selenimum )
+  - To experiment with blocking api's for integration testing ( think selenium )
   - mimic sync xhr
   - break your computer
 
