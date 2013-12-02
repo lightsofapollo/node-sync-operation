@@ -21,6 +21,7 @@ var result = sync.run(__dirname + '/read.js', { file: __dirname + '/foo.txt' });
 
 var fs = require('fs');
 var operation = require('sync-operation').operation(process.argv);
+var options = JSON.parse(new Buffer(process.argv[3], 'base64').toString());
 
 fs.readFile(options.file, 'utf8', function(err, content) {
   operation.end({
